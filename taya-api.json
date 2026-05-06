@@ -1,0 +1,521 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "App API",
+        "description": "商户应用接口，Merchant Application Interface",
+        "version": "openapi_3_1"
+    },
+    "servers": [
+        {
+            "url": "https://mis.bingjoy.com.cn/admin",
+            "description": "Generated server url"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Production Record",
+            "description": "制作记录,Production record"
+        },
+        {
+            "name": "Recipe",
+            "description": "商户配方管理接口,Merchant recipe management interface"
+        }
+    ],
+    "paths": {
+        "/app/merchant/recipes/{id}": {
+            "get": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "配方详情,Recipe detail",
+                "operationId": "findOne_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "更新配方,Update recipe",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "delete配方,Delete recipe",
+                "operationId": "delete_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "更改配方状态,Changing the Recipe Status",
+                "operationId": "changeStatus",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/app/merchant/recipes": {
+            "post": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "创建配方,Create recipe",
+                "operationId": "recipe",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app/merchant/recipes/page": {
+            "get": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "配方列表,Recipe list",
+                "operationId": "page",
+                "parameters": [
+                    {
+                        "name": "pageRequest",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/RecipePageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app/merchant/recipes/code/{code}": {
+            "get": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "配方详情,Recipe detail",
+                "operationId": "findOneByCode",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Recipe"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app/merchant/recipes/category": {
+            "get": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "配方类型列表,Recipe type list",
+                "operationId": "category",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app/merchant/productionRecord/{id}": {
+            "get": {
+                "tags": [
+                    "Production Record"
+                ],
+                "operationId": "findById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductionRecord"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app/merchant/productionRecord/page": {
+            "get": {
+                "tags": [
+                    "Production Record"
+                ],
+                "operationId": "page_1",
+                "parameters": [
+                    {
+                        "name": "pageRequest",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/app/merchant/recipes/batch": {
+            "delete": {
+                "tags": [
+                    "Recipe"
+                ],
+                "summary": "delete 配方,Delete recipes",
+                "operationId": "batch",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Recipe": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "名称,Name",
+                        "type": "string"
+                    },
+                    "status": {
+                        "title": "-1:删除Delete 1:正常Normal 0:禁用Disable",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "code": {
+                        "title": "编码,Code",
+                        "type": "string"
+                    },
+                    "externalCode": {
+                        "title": "外部编码,External Code",
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "type": {
+                        "title": "分类,Type",
+                        "type": "string"
+                    },
+                    "remark": {
+                        "type": "string"
+                    },
+                    "specifications": {
+                        "title": "规格,Specification",
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "item": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "invalidateMaterials": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "materials": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "RecipePageRequest": {
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sord": {
+                        "type": "string"
+                    },
+                    "sidx": {
+                        "type": "string"
+                    },
+                    "keyword": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "category": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ProductionRecord": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "title": "每一杯唯一识别码 必须上传,Each cup's unique identification code must be uploaded,Uuid",
+                        "type": "string"
+                    },
+                    "orderId": {
+                        "title": "订单ID,Order ID",
+                        "type": "string"
+                    },
+                    "estimateValue": {
+                        "title": "预计产量,Estimate production",
+                        "type": "number"
+                    },
+                    "totalWeight": {
+                        "title": "实际产量,Actual production",
+                        "type": "number"
+                    },
+                    "totalError": {
+                        "title": "误差值,Miss value",
+                        "type": "number"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "createTime": {
+                        "title": "创建时间扫二维码的时间？,Create time",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "startTime": {
+                        "title": "开始制作时间 给机器发送命令时的时间?,Start production time",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "finishTime": {
+                        "title": "结束制作时间,End production time",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "machineId": {
+                        "title": "机器id ,Machine id（不需上传）",
+                        "type": "string"
+                    },
+                    "recipeId": {
+                        "title": "配方,Recipe id",
+                        "type": "string"
+                    },
+                    "recipeName": {
+                        "title": "配方,Recipe id",
+                        "type": "string"
+                    },
+                    "materialRecords": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "status": {
+                        "title": "1:正常Normal -1:重做Reset 0:异常Abnormal",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "exception": {
+                        "type": "string"
+                    },
+                    "dualFlow": {
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    }
+}
