@@ -305,7 +305,7 @@
                         "in": "query",
                         "required": true,
                         "schema": {
-                            "type": "object"
+                            "$ref": "#/components/schemas/RecipePageRequest"
                         }
                     }
                 ],
